@@ -1,0 +1,13 @@
+{
+  "repository": "mikufilck/SongRequest",
+  "desktop_version": "1.6.0",
+  "scope": "auxiliary local overlay source only; not the full desktop source",
+  "files": {
+    ".gitattributes": "b55af79b76add0dc1881a08417258a85a126108d9a9edbcb6e34cceaddf42f90",
+    ".gitignore": "cad82d5b53619563f8db122d471f7b864f16bf1767f725de2385845861757d05",
+    "README.md": "a1bb0db326515de1fa85c4654cc3588460caae5da9989c9919c3e48723a9576e",
+    "src/overlay.py": "0e32187a2549356d077d9d1b7f4bb1734fb7221c7a9d0c25b1de31f4c2981249",
+    "src/overlay_protocol.py": "2cfd597871cfe4cf3ce0dcfbbe266e0dc90d0f89f8524a57ce0210f478e3a625",
+    "src/requirements.txt": "b2c05cff96b4a84d25ca81b466a73745906053b3b50168df50b28884560e2ecb"
+  }
+}
