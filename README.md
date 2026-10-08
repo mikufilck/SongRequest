@@ -31,23 +31,31 @@ Get-FileHash -Algorithm SHA256 <文件路径>
 
 | 模块 | 内容 |
 | --- | --- |
+| `src/local_desktop.py` | Flet 本地控制台入口：队列、歌单、背景设置与直接歌曲搜索 |
+| `src/desktop_ui.py` | 桌面程序复用的 Flet 视图、队列操作、歌单、提示与背景控件 |
+| `src/desktop_media.py` | Windows SMTC、播放器进程检测、剪贴板辅助 |
+| `src/desktop_overlay.py` | 本地浮窗启动、探测、关闭及迟到回调隔离 |
+| `src/json_store.py` | JSON 原子保存、并发读写、坏文件保全与诊断 |
 | `src/music_search.mjs` | 网易云 / QQ 音乐搜索、结果归一化与合并 |
 | `src/queue_rules.py` | 歌名去重、队列与每人上限、冷却、持久化入队与失败回滚 |
 | `src/overlay.py` | 本地透明点唱浮窗 |
 | `src/overlay_protocol.py` | 分片收包、大小限制和连接超时 |
-| `tests/` | 搜索与入队行为回归 |
+| `tests/` | 桌面控件、存储、搜索与入队行为回归 |
 
-启动浮窗与运行测试：
+运行桌面界面、浮窗与测试（Python 3.12；歌曲搜索需要支持 `fetch` 的 Node.js）：
 
 ```powershell
 python -m pip install -r src/requirements.txt
 python -m pip install pytest
+python src/local_desktop.py
 python src/overlay.py
-python -m pytest tests/test_queue_rules.py -q
+python -m pytest tests -q
 node --test tests/music_search.test.mjs
 ```
 
 搜索模块可在支持 `fetch` 的 JavaScript 环境中调用 `searchSongs(keyword)`；入队模块的 `enqueue_song` 接收调用方提供的保存函数，保存失败时恢复队列和冷却状态。
+
+本地控制台默认将数据保存在 `%LOCALAPPDATA%\SongRequestLocal`，也可通过 `--data-dir <目录>` 指定位置。`DesktopUI` 的宿主负责保存、搜索和界面调度回调，可根据自己的桌面应用接入这些控件。
 
 ## 反馈
 

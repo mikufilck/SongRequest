@@ -2,6 +2,11 @@
   "repository": "mikufilck/SongRequest",
   "desktop_version": "1.6.0",
   "components": [
+    "desktop_ui",
+    "desktop_media",
+    "desktop_overlay",
+    "json_store",
+    "local_desktop",
     "music_search",
     "queue_rules",
     "overlay"
@@ -9,13 +14,20 @@
   "files": {
     ".gitattributes": "289eaf4a5277763bff69a98f23eefc16e387e808db2b7e05cad9680343d67603",
     ".gitignore": "76f47a8b3172ecad4b072f36e1b7f5f33ad51ca31407b00cd11f91eb854ba210",
-    "README.md": "f525947749cfc4324c50a180b98bb6039f5b324282e12e20bdac07820a3ccba2",
+    "README.md": "3e91f7d52170f53655d1ccde342c5bfbf344ea34cdfc4bad1c3d190324d82b6f",
+    "src/desktop_media.py": "44e9bf00eb09c31c8f6184627669bf39d33f3271a536877578392331aa0ef771",
+    "src/desktop_overlay.py": "9b1b05b4bb8185cac2c6381dc64ef34d565e43ec60595aa4f2a29932cbec01ce",
+    "src/desktop_ui.py": "c3a1013a03b7ed0723e65ca346609426a88edd64f404e79b4811d54a790bdb86",
+    "src/json_store.py": "47a8c8d675d095b9e6c0eb2bcf71c99de8e5aecd402bfed3d8830c312a3b9e89",
+    "src/local_desktop.py": "b674fcc1831e9512b4b93262150c7e2ffdd7176fc344a0c5e373d39e9817ac15",
     "src/music_search.mjs": "d7af20cfc549ec57aaf3b60ac913f90f2b98120ca046f58f19145b13066b09cb",
     "src/overlay.py": "0e32187a2549356d077d9d1b7f4bb1734fb7221c7a9d0c25b1de31f4c2981249",
     "src/overlay_protocol.py": "2cfd597871cfe4cf3ce0dcfbbe266e0dc90d0f89f8524a57ce0210f478e3a625",
     "src/queue_rules.py": "e037d16a8369f15bc0a9ee5af7940145b0ba12e01624ce11d488a5de78e4b7fe",
-    "src/requirements.txt": "b2c05cff96b4a84d25ca81b466a73745906053b3b50168df50b28884560e2ecb",
+    "src/requirements.txt": "323fcacc9ecbb5c0af4e3d54bd5c5c7e96b2782d4428acc13f2d87edce759227",
     "tests/music_search.test.mjs": "376c3da59ed1fcca53354331042cbe29054883ce7d21e6eb94bde8d49cabeb07",
+    "tests/test_desktop_public.py": "8312a850ef97b82621501322354ef923ca4c8353b66b431aaf3e2333d8d89a73",
+    "tests/test_json_store.py": "388f17772492da6278625e520f27f73842969862e5a87d5e0ed1c592da9840b3",
     "tests/test_queue_rules.py": "e31e235b4d551e4396fc8909ba7fc44ead22a0cf27e6c4e61a4ee415534059df"
   }
 }
