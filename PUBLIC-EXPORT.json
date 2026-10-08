@@ -3,7 +3,7 @@
   "desktop_version": "1.6.0",
   "scope": "auxiliary local overlay source only; not the full desktop source",
   "files": {
-    ".gitattributes": "b55af79b76add0dc1881a08417258a85a126108d9a9edbcb6e34cceaddf42f90",
+    ".gitattributes": "289eaf4a5277763bff69a98f23eefc16e387e808db2b7e05cad9680343d67603",
     ".gitignore": "cad82d5b53619563f8db122d471f7b864f16bf1767f725de2385845861757d05",
     "README.md": "a1bb0db326515de1fa85c4654cc3588460caae5da9989c9919c3e48723a9576e",
     "src/overlay.py": "0e32187a2549356d077d9d1b7f4bb1734fb7221c7a9d0c25b1de31f4c2981249",
