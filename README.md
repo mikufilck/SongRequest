@@ -1,37 +1,54 @@
 # ACGN同好会点歌版
 
-ACGN同好会点歌版（SongRequest）是面向主播的桌面点歌工具。本仓库提供 Windows 完整桌面版 Release，以及选定的辅助源码。
+ACGN同好会点歌版（SongRequest）是一款面向直播场景的点歌管理工具。观众选择歌曲，主播在桌面端统一查看和处理点歌队列，让歌曲搜索、接歌、播放安排和直播展示连成一套日常工作流程。
 
-## 下载
+## 功能
 
-请从 [GitHub Releases](https://github.com/mikufilck/SongRequest/releases/latest) 下载完整包，解压后运行 `SongRequest/SongRequest.exe`。首次使用自行登录。
+- **歌曲搜索**：汇总网易云音乐与 QQ 音乐的搜索结果，合并同歌名、同歌手条目，保留平台信息与付费标记。
+- **队列管理**：查看待播歌曲，切换播放、跳过和清理条目，按自己的直播节奏处理点歌。
+- **点歌规则**：设置队列容量、每人待播上限、重复歌曲过滤和请求冷却时间。
+- **主播歌单**：维护自己会唱的歌曲，观众可以从歌单中选择点唱。
+- **播放辅助**：复制歌名到剪贴板，并通过系统媒体控制读取播放状态、辅助切歌。
+- **直播展示**：提供透明点唱浮窗及 OBS / 直播姬浏览器源点歌板，支持调整展示样式。
+- **个性设置**：设置背景、展示主题和队列清理方式。
 
-增量包仅适用于 Release 标注的基线版本；不确定原版本时使用完整包。更新前退出旧程序，保留自己的数据。
+## 下载与使用
 
-每个 Release 同时提供 `SHA256SUMS.txt`。Windows 可使用 `Get-FileHash -Algorithm SHA256 <文件路径>` 核对下载文件。
+1. 从 [Releases](https://github.com/mikufilck/SongRequest/releases/latest) 下载 Windows 完整包。
+2. 解压后运行 `SongRequest/SongRequest.exe`，按提示完成 B站登录。
+3. 在设置中调整点歌规则，需要点唱时先添加主播歌单。
+4. 将应用提供的观众地址发给观众，在直播控制台处理点歌队列；直播展示链接可添加为 OBS 浏览器源。
 
-## 公开源码
+软件采用绿色压缩包分发，无需安装。增量包只适用于 Release 标注的基线版本；不确定原版本时使用完整包。更新前退出旧程序，并保留自己的数据。
 
-| 文件 | 用途 |
+Release 中的 `SHA256SUMS.txt` 用于核对下载文件。在 Windows 中可运行：
+
+```powershell
+Get-FileHash -Algorithm SHA256 <文件路径>
+```
+
+## 代码导航
+
+| 模块 | 内容 |
 | --- | --- |
-| `src/overlay.py` | PySide6 本地透明点唱浮窗 |
-| `src/overlay_protocol.py` | 有大小上限与超时的本地 TCP 收包 |
-| `src/requirements.txt` | 辅助模块所需依赖 |
+| `src/music_search.mjs` | 网易云 / QQ 音乐搜索、结果归一化与合并 |
+| `src/queue_rules.py` | 歌名去重、队列与每人上限、冷却、持久化入队与失败回滚 |
+| `src/overlay.py` | 本地透明点唱浮窗 |
+| `src/overlay_protocol.py` | 分片收包、大小限制和连接超时 |
+| `tests/` | 搜索与入队行为回归 |
 
-辅助浮窗可独立启动：
+启动浮窗与运行测试：
 
 ```powershell
 python -m pip install -r src/requirements.txt
+python -m pip install pytest
 python src/overlay.py
+python -m pytest tests/test_queue_rules.py -q
+node --test tests/music_search.test.mjs
 ```
 
-浮窗接收来自本机的队列展示数据。公开部分不构成完整桌面项目，不能用来重建完整 Release。主程序、账号认证、机器人同步、观众网页、OBS 网页、Cloudflare Worker 与其联动协议源码不在本仓库。
-
-完整桌面包保留这些功能；源码公开范围与安装包功能范围不同。PyInstaller 打包不提供防反编译保证。
-
-`PUBLIC-EXPORT.json` 记录本次公开文件的 SHA256；公开提交历史来自独立导出目录，不包含完整项目的历史。
+搜索模块可在支持 `fetch` 的 JavaScript 环境中调用 `searchSongs(keyword)`；入队模块的 `enqueue_song` 接收调用方提供的保存函数，保存失败时恢复队列和冷却状态。
 
 ## 反馈
 
-请在 [Issues](https://github.com/mikufilck/SongRequest/issues) 中提供版本号、复现步骤和经过脱敏的截图。不要上传 Cookie、账号配置、登录二维码或认证信息。
-
+遇到问题请在 [Issues](https://github.com/mikufilck/SongRequest/issues) 中提供版本号、复现步骤和截图，并隐去账号与登录信息。

@@ -1,13 +1,21 @@
 {
   "repository": "mikufilck/SongRequest",
   "desktop_version": "1.6.0",
-  "scope": "auxiliary local overlay source only; not the full desktop source",
+  "components": [
+    "music_search",
+    "queue_rules",
+    "overlay"
+  ],
   "files": {
     ".gitattributes": "289eaf4a5277763bff69a98f23eefc16e387e808db2b7e05cad9680343d67603",
-    ".gitignore": "cad82d5b53619563f8db122d471f7b864f16bf1767f725de2385845861757d05",
-    "README.md": "a1bb0db326515de1fa85c4654cc3588460caae5da9989c9919c3e48723a9576e",
+    ".gitignore": "76f47a8b3172ecad4b072f36e1b7f5f33ad51ca31407b00cd11f91eb854ba210",
+    "README.md": "f525947749cfc4324c50a180b98bb6039f5b324282e12e20bdac07820a3ccba2",
+    "src/music_search.mjs": "d7af20cfc549ec57aaf3b60ac913f90f2b98120ca046f58f19145b13066b09cb",
     "src/overlay.py": "0e32187a2549356d077d9d1b7f4bb1734fb7221c7a9d0c25b1de31f4c2981249",
     "src/overlay_protocol.py": "2cfd597871cfe4cf3ce0dcfbbe266e0dc90d0f89f8524a57ce0210f478e3a625",
-    "src/requirements.txt": "b2c05cff96b4a84d25ca81b466a73745906053b3b50168df50b28884560e2ecb"
+    "src/queue_rules.py": "e037d16a8369f15bc0a9ee5af7940145b0ba12e01624ce11d488a5de78e4b7fe",
+    "src/requirements.txt": "b2c05cff96b4a84d25ca81b466a73745906053b3b50168df50b28884560e2ecb",
+    "tests/music_search.test.mjs": "376c3da59ed1fcca53354331042cbe29054883ce7d21e6eb94bde8d49cabeb07",
+    "tests/test_queue_rules.py": "e31e235b4d551e4396fc8909ba7fc44ead22a0cf27e6c4e61a4ee415534059df"
   }
 }
